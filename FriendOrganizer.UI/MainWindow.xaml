@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FriendOrganizer.UI"
         xmlns:view ="clr-namespace:FriendOrganizer.UI.View"
         xmlns:viewModel ="clr-namespace:FriendOrganizer.UI.ViewModel"
         mc:Ignorable="d"
@@ -13,6 +12,9 @@
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:FriendDetailViewModel}">
             <view:FriendDetailView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:MeetingDetailViewModel}">
+            <view:MeetingDetailView/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -28,6 +30,8 @@
             <MenuItem Header="Create">
                 <MenuItem Header="New Friend" Command="{Binding CreateNewDetailCommand}"
                           CommandParameter="{x:Type viewModel: FriendDetailViewModel}"/>
+                <MenuItem Header="New Meeting" Command="{Binding CreateNewDetailCommand}"
+                          CommandParameter="{x:Type viewModel: MeetingDetailViewModel}"/>
             </MenuItem>
         </Menu>
         <view:NavigationView Grid.Row="1" DataContext="{Binding NavigationViewModel}"/>

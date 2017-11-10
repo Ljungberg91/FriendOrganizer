@@ -47,7 +47,7 @@
             </StackPanel>
             <DataGrid ItemsSource="{Binding PhoneNumbers}"
                       SelectedItem="{Binding SelectedPhoneNumber, Mode=TwoWay}"
-                      AutoGenerateColumns="False" RowHeaderWidth="0">
+                      AutoGenerateColumns="False" RowHeaderWidth="0" Height="0" VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Phone Numbers" Width="*"
                                         ElementStyle="{StaticResource DataGridColumnStyle}"
