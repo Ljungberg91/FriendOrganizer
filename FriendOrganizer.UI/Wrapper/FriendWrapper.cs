@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FriendOrganizer.UI.Wrapper
 {
-    public partial class FriendWrapper : ModelWrapper<Friend>
+    public class FriendWrapper : ModelWrapper<Friend>
     {
         public FriendWrapper(Friend model) : base(model)
         {

@@ -68,9 +68,10 @@ namespace FriendOrganizer.UI.ViewModel
 
         public override async Task LoadAsync(int? friendId)
         {
-            var friend = friendId.HasValue 
-              ? await _friendRepository.GetByIdAsync(friendId.Value)
-              : CreateNewFriend();
+
+            var friend = friendId.HasValue
+             ? await _friendRepository.GetByIdAsync(friendId.Value)
+             : CreateNewFriend();
 
             InitializeFriend(friend);
 
@@ -106,9 +107,9 @@ namespace FriendOrganizer.UI.ViewModel
             }
         }
 
-        private void InitializeFriend(object friend)
+        private void InitializeFriend(Friend friend)
         {
-            Friend = new FriendWrapper(friend as Friend);
+            Friend = new FriendWrapper(friend);
             Friend.PropertyChanged += (s, e) =>
             {
                 if (!HasChanges)
