@@ -36,7 +36,7 @@ namespace FriendOrganizer.UI.ViewModel
             RemoveFriendCommand = new DelegateCommand(OnRemoveFriendExecute, OnRemoveFriendCanExecute);
         }
 
-       
+
 
         public ICommand AddFriendCommand { get; }
         public ICommand RemoveFriendCommand { get; }
