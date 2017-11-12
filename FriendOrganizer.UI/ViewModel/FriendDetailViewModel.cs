@@ -77,7 +77,7 @@ namespace FriendOrganizer.UI.ViewModel
         public override async Task LoadAsync(int friendId)
         {
 
-            var friend = friendId > 0
+            Friend friend = friendId > 0
              ? await _friendRepository.GetByIdAsync(friendId)
              : CreateNewFriend();
 
@@ -209,11 +209,11 @@ namespace FriendOrganizer.UI.ViewModel
         {
             if (await _friendRepository.HasMeetingsAsync(Friend.Id))
             {
-                MessageDialogService.ShowInfoDialog($"{Friend.FirstName} {Friend.LastName} can't be deleted, as this friend is part of at least one meeting");
+               await MessageDialogService.ShowInfoDialogAsync($"{Friend.FirstName} {Friend.LastName} can't be deleted, as this friend is part of at least one meeting");
                 return;
             }
 
-            var result = MessageDialogService.ShowOKCancelDialog($"Do you really want to delete the friend {Friend.FirstName} {Friend.LastName}?",
+            var result = await MessageDialogService.ShowOKCancelDialogAsync($"Do you really want to delete the friend {Friend.FirstName} {Friend.LastName}?",
                 "Question");
             if (result == MessageDialogResult.OK)
             {
@@ -224,7 +224,7 @@ namespace FriendOrganizer.UI.ViewModel
 
         }
 
-        private object CreateNewFriend()
+        private Friend CreateNewFriend()
         {
             var friend = new Friend();
             _friendRepository.Add(friend);
