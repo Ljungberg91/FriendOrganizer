@@ -62,7 +62,7 @@ namespace FriendOrganizer.UI.ViewModel
             OnOpenDetailView(
                new OpenDetailViewEventArgs { Id = 0, ViewModelName = viewModelType.Name });
         }
-            
+
 
         public async Task LoadAsync()
         {
@@ -74,6 +74,14 @@ namespace FriendOrganizer.UI.ViewModel
             var detailViewModel = DetailViewModels
         .SingleOrDefault(vm => vm.Id == args.Id
         && vm.GetType().Name == args.ViewModelName);
+
+            var isWeatherOpen = DetailViewModels.Any(vm => vm.Id == args.Id
+        && vm.GetType().Name == args.ViewModelName);
+
+            if (isWeatherOpen)
+            {
+                return;
+            }
 
             if (detailViewModel == null)
             {
