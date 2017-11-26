@@ -20,6 +20,7 @@ namespace FriendOrganizer.UI.ViewModel
 
         public ICommand CreateNewDetailCommand { get; }
         public ICommand OpenSingleDetailViewCommand { get; }
+        public ICommand OnShowingWeatherCommand { get; }
         public INavigationViewModel NavigationViewModel { get; }
 
         public ObservableCollection<IDetailViewModel> DetailViewModels { get; }
@@ -41,7 +42,6 @@ namespace FriendOrganizer.UI.ViewModel
             _eventAggregator = eventAggregator;
             _detailViewModelCreator = detailViewModelCreator;
             _messageDialogService = messageDialogService;
-
             DetailViewModels = new ObservableCollection<IDetailViewModel>();
             _eventAggregator.GetEvent<OpenDetailViewEvent>()
                 .Subscribe(OnOpenDetailView);
@@ -52,11 +52,17 @@ namespace FriendOrganizer.UI.ViewModel
 
             CreateNewDetailCommand = new DelegateCommand<Type>(OnCreateNewDetailExecute);
             OpenSingleDetailViewCommand = new DelegateCommand<Type>(OnOpenSingleDetailViewExecute);
+            OnShowingWeatherCommand = new DelegateCommand<Type>(OnOpenWeatherDetailViewExecute);
 
             NavigationViewModel = navigationViewModel;
         }
 
-
+        public async void OnOpenWeatherDetailViewExecute(Type viewModelType)
+        {
+            OnOpenDetailView(
+               new OpenDetailViewEventArgs { Id = 0, ViewModelName = viewModelType.Name });
+        }
+            
 
         public async Task LoadAsync()
         {

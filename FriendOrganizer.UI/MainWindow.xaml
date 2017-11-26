@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FriendOrganizer.UI"
         xmlns:view="clr-namespace:FriendOrganizer.UI.View"
         xmlns:viewModel="clr-namespace:FriendOrganizer.UI.ViewModel"
+        xmlns:apiService="clr-namespace:FriendOrganizer.UI.View.Services"             
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="FriendOrganizer" Height="700" Width="1000"
@@ -20,6 +21,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:ProgrammingLanguageDetailViewModel}">
             <view:ProgrammingLanguageDetailView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:WeatherViewModel}">
+            <view:WeatherView/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -43,6 +47,9 @@
                   Command="{Binding OpenSingleDetailViewCommand}"
                   CommandParameter="{x:Type viewModel:ProgrammingLanguageDetailViewModel}"/>
             </MenuItem>
+            <Button Content="Weather"
+                    Command="{Binding OnShowingWeatherCommand}"
+                    CommandParameter="{x:Type viewModel:WeatherViewModel}"/>
         </Menu>
         <view:NavigationView Grid.Row="1"
                          DataContext="{Binding NavigationViewModel}"/>

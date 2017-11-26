@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="FriendOrganizer.UI.View.WeatherView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FriendOrganizer.UI.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Content="Title:" Margin="10 0"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Weather.title}"/>
+
+        <Label Grid.Row="2" Content="Timezone:" Margin="10 0"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Weather.timezone}"/>
+
+        <Label Grid.Row="3" Content="Temperature C:" Margin="10 0"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ConsolidatedWeather.the_temp}"/>
+
+        <Label Grid.Row="4" Content="Windspeed Mph:" Margin="10 0"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ConsolidatedWeather.wind_speed}"/>
+
+        <Label Grid.Row="5" Content="Wind direction:" Margin="10 0"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ConsolidatedWeather.wind_direction_compass}"/>
+
+        <Label Grid.Row="6" Content="Time:" Margin="10 0"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Weather.time}"/>
+
+        <Button Grid.Row="7" Content="Update weather" Margin="10 10"  
+                Command="{Binding OnUpdateWeatherCommand}"/>
+    </Grid>
+
+
+</UserControl>
